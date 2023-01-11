@@ -21,4 +21,7 @@ racadm -r <<IP_OF_IDRAC>> -u <<USERNAME>> -p <<PASSWORD>> sslkeyupload -t 1 -f /
 
 ## UPLOAD CERTIFICATE
 racadm -r <<IP_OF_IDRAC>> -u <<USERNAME>> -p <<PASSWORD>> sslcertupload -t 1 -f /certs/filename.cer
+
+## RESET IDRAC
+racadm -r <<IP_OF_IDRAC>> -u <<USERNAME>> -p <<PASSWORD>> racreset
 ```
