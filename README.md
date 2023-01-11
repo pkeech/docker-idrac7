@@ -13,9 +13,12 @@ docker build -t <<IMAGE_NAME_AND_TAG>> .
 **Update SSL Certificate**
 
 ``` bash
+## RUN DOCKER IMAGE
+docker run --rm -it -v <<PATH-TO-CERTS>>:/certs --entrypoint /bin/bash <<IMAGE_NAME_AND_TAG>>
+
 ## UPLOAD PRIVATE KEY
-docker run --rm -v <<PATH-TO-CERTS>>:/certs <<IMAGE_NAME_AND_TAG>> -r <<IP_OF_IDRAC>> -u <<USERNAME>> -p <<PASSWORD>> sslkeyupload -t 1 -f /certs/filename.key
+racadm -r <<IP_OF_IDRAC>> -u <<USERNAME>> -p <<PASSWORD>> sslkeyupload -t 1 -f /certs/filename.key
 
 ## UPLOAD CERTIFICATE
-docker run --rm -v <<PATH-TO-CERTS>>:/certs <<IMAGE_NAME_AND_TAG>> -r <<IP_OF_IDRAC>> -u <<USERNAME>> -p <<PASSWORD>> sslcertupload -t 1 -f /certs/filename.cer
+racadm -r <<IP_OF_IDRAC>> -u <<USERNAME>> -p <<PASSWORD>> sslcertupload -t 1 -f /certs/filename.cer
 ```
